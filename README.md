@@ -1,2 +1,18 @@
-# mdsp-console
-mdsp 的控制台
+## install
+
+```node
+npm install
+```
+
+## dev
+
+```node
+npm run dev
+```
+
+## build
+
+```
+npm run build
+```
+
