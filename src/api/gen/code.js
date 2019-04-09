@@ -9,7 +9,6 @@ export const fetchTableList = (param) => {
 }
 
 export const exportCodeZip = (param) => {
-  console.log(1)
   return request({
     url: '/gen/code/build',
     method: 'post',

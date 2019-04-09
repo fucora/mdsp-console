@@ -19,7 +19,7 @@
       <el-table-column align="center" label="操作" v-if="sys_gen_download">
         <template slot-scope="scope">
           <el-button class="search-btn" @click="openGenConfigDialogHandle(scope.row.tableName)">
-            <svg-icon icon-class="download"></svg-icon> 下载
+            <svg-icon icon-class="download"></svg-icon> 创建
           </el-button>
         </template>
       </el-table-column>
@@ -36,31 +36,27 @@
             </el-option>
           </el-select>
         </el-form-item> -->
-        <el-form-item label="entity包名称" prop="packageName">
-          <el-input v-model="table.param.packageName" placeholder="若为空，则加载默认配置"></el-input>
-        </el-form-item>
-        <el-form-item label="query包名称" prop="queryPackageName">
-          <el-input v-model="table.param.queryPackageName" placeholder="若为空，则加载默认配置"></el-input>
-        </el-form-item>
-        <el-form-item label="mapper包名称" prop="mapperPackageName" v-if="table.param.genType == 'mybatis'">
-          <el-input v-model="table.param.mapperPackageName" placeholder="若为空，则加载默认配置"></el-input>
-        </el-form-item>
-        <el-form-item label="dao包名称" prop="daoPackageName" v-if="table.param.genType == 'ibatis'">
-          <el-input v-model="table.param.daoPackageName" placeholder="若为空，则加载默认配置"></el-input>
-        </el-form-item>
-        <el-form-item label="serviceApi包名称" prop="serviceApiPackageName" v-if="table.param.genType == 'ibatis'">
-          <el-input v-model="table.param.serviceApiPackageName" placeholder="若为空，则加载默认配置"></el-input>
+
+        <el-form-item label="子项目名" prop="subProjectName">
+          <el-input v-model="table.param.subProjectName" placeholder="子项目的文件夹名称"></el-input>
         </el-form-item>
 
-        <el-form-item label="service包名称" prop="servicePackageName">
-          <el-input v-model="table.param.servicePackageName" placeholder="若为空，则加载默认配置"></el-input>
+        <el-form-item label="子项目名" prop="vueProjecePath">
+          <el-input v-model="table.param.vueProjecePath" placeholder="mdsp 和 mdsp-console 父路径相同可不填"></el-input>
         </el-form-item>
-        <el-form-item label="controller包名称" prop="controllerPackageName" v-if="table.param.genType == 'mybatis'">
-          <el-input v-model="table.param.controllerPackageName" placeholder="若为空，则加载默认配置"></el-input>
+
+        <el-form-item label="模块名" prop="moduleName">
+          <el-input v-model="table.param.moduleName" @change="moduleNameChange" placeholder="模块在项目中的英文名"></el-input>
         </el-form-item>
+
+        <el-form-item label="包名称" prop="packageName">
+          <el-input v-model="table.param.packageName" placeholder="若为空，则加载默认配置"></el-input>
+        </el-form-item>
+
         <el-form-item label="作者名称" prop="authorName">
           <el-input v-model="table.param.authorName" placeholder="若为空，则加载默认配置"></el-input>
         </el-form-item>
+
       </el-form> <span slot="footer">
         <el-button @click="dialogShow = false">取消</el-button>
         <el-button @click="exportCodeZipHandle" type="primary">保存</el-button>
@@ -70,7 +66,7 @@
 </template>
 <script>
 import moment from 'moment'
-import { fetchTableList, exportCodeZip } from '@/api/code'
+import { fetchTableList, exportCodeZip } from '@/api/gen/code'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -105,14 +101,11 @@ export default {
         total: 0,
         selectTableNames: [],
         param: {
-          packageName: '',
-          servicePackageName: '',
-          mapperPackageName: '',
-          controllerPackageName: '',
-          daoPackageName: '',
-          queryPackageName: '',
-          serviceApiPackageName: '',
-          authorName: '',
+          subProjectName: '',
+          vueProjecePath: '',
+          moduleName: '',
+          packageName: 'com.yhcoo.',
+          authorName: 'kingkey',
           genType: 'mybatis',
           tableName: []
         }
@@ -126,10 +119,12 @@ export default {
   },
   mounted() {
     this.getData()
+    console.log(' YYYY: ' + JSON.stringify(this.permissions))
     this.sys_gen_select = this.permissions['/gen/code:select']
     this.sys_gen_download = this.permissions['/gen/code:download']
   },
   methods: {
+
     async getData() {
       this.table.loading = true
       const res = await fetchTableList(this.table.query)
@@ -192,6 +187,9 @@ export default {
           navigator.msSaveBlob(blob, fileName)
         }
       })
+    },
+    moduleNameChange(value) {
+      this.table.param.packageName = 'com.yhcoo.' + value
     }
   }
 }

@@ -279,7 +279,6 @@ export default {
         for (var i = 0; i < row.sysRoleVoList.length; i++) {
           this.role[i] = row.sysRoleVoList[i].roleId
         }
-        this.dialogFormVisible = true
       })
     },
     handleSearch() {
