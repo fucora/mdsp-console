@@ -181,6 +181,9 @@ export default {
       // 获取资源树信息
       const res = await getAllReource()
       this.permissionTree = res.data
+
+      console.log('this.permissionTree: ' + JSON.stringify(this.permissionTree))
+      console.log('this.dialog.data.sysResourceIds: ' + JSON.stringify(this.dialog.data.sysResourceIds))
       this.checkedIds = this.getAllLeafNodeId(
         this.permissionTree,
         this.dialog.data.sysResourceIds,
