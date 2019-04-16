@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   validatenull
 } from './validate'

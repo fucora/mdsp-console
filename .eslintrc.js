@@ -37,7 +37,7 @@ module.exports = {
     'camelcase': [0, {
       'properties': 'always'
     }],
-    'comma-dangle': [2, 'never'],
+    'comma-dangle': [0],
     'comma-spacing': [2, {
       'before': false,
       'after': true
@@ -47,15 +47,13 @@ module.exports = {
     'curly': [2, 'multi-line'],
     'dot-location': [2, 'property'],
     'eol-last': 2,
-    'eqeqeq': [2, 'allow-null'],
+    'eqeqeq': [0],
     'generator-star-spacing': [2, {
       'before': true,
       'after': true
     }],
     'handle-callback-err': [2, '^(err|error)$'],
-    'indent': [2, 2, {
-      'SwitchCase': 1
-    }],
+    'indent': [0],
     'jsx-quotes': [2, 'prefer-single'],
     'key-spacing': [2, {
       'beforeColon': false,
@@ -84,7 +82,7 @@ module.exports = {
     'no-duplicate-case': 2,
     'no-empty-character-class': 2,
     'no-empty-pattern': 2,
-    'no-eval': 2,
+    'no-eval': 0,
     'no-ex-assign': 2,
     'no-extend-native': 2,
     'no-extra-bind': 2,
@@ -105,7 +103,7 @@ module.exports = {
     }],
     'no-lone-blocks': 2,
     'no-mixed-spaces-and-tabs': 2,
-    'no-multi-spaces': 2,
+    'no-multi-spaces': 0,
     'no-multi-str': 2,
     'no-multiple-empty-lines': [2, {
       'max': 1
@@ -142,10 +140,7 @@ module.exports = {
     }],
     'no-unreachable': 2,
     'no-unsafe-finally': 2,
-    'no-unused-vars': [2, {
-      'vars': 'all',
-      'args': 'none'
-    }],
+    'no-unused-vars': [0],
     'no-useless-call': 2,
     'no-useless-computed-key': 2,
     'no-useless-constructor': 2,

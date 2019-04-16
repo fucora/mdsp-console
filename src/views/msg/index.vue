@@ -136,18 +136,18 @@ import qs from 'qs'
 export default {
   data() {
     return {
-        listLoading: false,
-        param: {
-            status: null,
-            dead: null,
-            page: 1,
-            size: 10
-        },
-        total: 0,
-        msgs: [],
-        sys_msg_select: false,
-        multipleSelection: []
-        }
+      listLoading: false,
+      param: {
+        status: null,
+        dead: null,
+        page: 1,
+        size: 10
+      },
+      total: 0,
+      msgs: [],
+      sys_msg_select: false,
+      multipleSelection: []
+    }
   },
   computed: {
     ...mapGetters(['permissions'])
@@ -171,20 +171,20 @@ export default {
         this.listLoading = false
       })
     },
-    reSendMsg(index,row) {
-      reSendMsg(qs.stringify({messageId:row.messageId})).then(response => {
+    reSendMsg(index, row) {
+      reSendMsg(qs.stringify({ messageId: row.messageId })).then(response => {
         this.$notify({
-            title: '成功',
-            message: '重新发送消息成功',
-            type: 'success',
-            duration: 2000
+          title: '成功',
+          message: '重新发送消息成功',
+          type: 'success',
+          duration: 2000
         })
       }).cache(() => {
         this.$notify({
-            title: '失败',
-            message: '重新发送失败',
-            type: 'error',
-            duration: 2000
+          title: '失败',
+          message: '重新发送失败',
+          type: 'error',
+          duration: 2000
         })
       })
     },

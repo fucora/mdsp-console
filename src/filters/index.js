@@ -1,3 +1,4 @@
+/* eslint-disable */
 function pluralize(time, label) {
   if (time === 1) {
     return time + label
@@ -9,7 +10,7 @@ function pluralize(time, label) {
  */
 export function dateFormat(date) {
   let format = 'yyyy-MM-dd hh:mm:ss'
-  if (date !== 'Invalid Date') {
+  if (date != 'Invalid Date') {
     var o = {
       'M+': date.getMonth() + 1, // month
       'd+': date.getDate(), // day
@@ -26,7 +27,7 @@ export function dateFormat(date) {
     for (var k in o) {
       if (new RegExp('(' + k + ')').test(format)) {
         format = format.replace(RegExp.$1,
-          RegExp.$1.length === 1 ? o[k]
+          RegExp.$1.length == 1 ? o[k]
             : ('00' + o[k]).substr(('' + o[k]).length))
       }
     }

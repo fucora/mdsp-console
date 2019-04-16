@@ -2,7 +2,7 @@
 import Vue from 'vue'
 export default function treeToArray(data, expandAll, parent = null, level = null) {
   let tmp = []
-  Array.from(data).forEach(function (record) {
+  Array.from(data).forEach(function(record) {
     if (record._expanded === undefined) {
       Vue.set(record, '_expanded', expandAll)
     }
