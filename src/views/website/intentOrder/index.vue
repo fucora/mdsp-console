@@ -206,7 +206,7 @@
     },
     methods: {
       getList() {
-        this.listLoading = true;
+        this.listLoading = true
         pageIntentOrderApi(this.listQuery)
           .then(response => {
             this.list = response.data.records
@@ -233,7 +233,7 @@
         this.getList()
       },
       handleCreate() {
-        this.resetTemp();
+        this.resetTemp()
         this.dialogStatus = 'create'
         this.dialogFormVisible = true
       },
@@ -259,33 +259,33 @@
                   message: '删除成功',
                   type: 'success',
                   duration: 2000
-                });
-                const index = this.list.indexOf(row);
-                this.list.splice(index, 1);
-              });
-          });
+                })
+                const index = this.list.indexOf(row)
+                this.list.splice(index, 1)
+              })
+          })
       },
       create(formName) {
-        const set = this.$refs;
+        const set = this.$refs
         set[formName].validate(valid => {
           if (valid) {
             addIntentOrderApi(this.form).then(() => {
               this.dialogFormVisible = false
-              this.getList();
+              this.getList()
               this.$notify({
                 title: '成功',
                 message: '创建成功',
                 type: 'success',
                 duration: 2000
-              });
+              })
             })
           } else {
-            return false;
+            return false
           }
-        });
+        })
       },
       cancel(formName) {
-        this.dialogFormVisible = false;
+        this.dialogFormVisible = false
         const set = this.$refs
         set[formName].resetFields()
       },
@@ -293,20 +293,20 @@
         const set = this.$refs
         set[formName].validate(valid => {
           if (valid) {
-            this.dialogFormVisible = false;
-            this.form.password = undefined;
+            this.dialogFormVisible = false
+            this.form.password = undefined
             updateIntentOrderApi(this.form).then(() => {
-              this.dialogFormVisible = false;
+              this.dialogFormVisible = false
               this.getList()
               this.$notify({
                 title: '成功',
                 message: '创建成功',
                 type: 'success',
                 duration: 2000
-              });
-            });
+              })
+            })
           } else {
-            return false;
+            return false
           }
         })
       },

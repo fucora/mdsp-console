@@ -9,7 +9,7 @@ function pluralize(time, label) {
  */
 export function dateFormat(date) {
   let format = 'yyyy-MM-dd hh:mm:ss'
-  if (date != 'Invalid Date') {
+  if (date !== 'Invalid Date') {
     var o = {
       'M+': date.getMonth() + 1, // month
       'd+': date.getDate(), // day
@@ -26,7 +26,7 @@ export function dateFormat(date) {
     for (var k in o) {
       if (new RegExp('(' + k + ')').test(format)) {
         format = format.replace(RegExp.$1,
-          RegExp.$1.length == 1 ? o[k]
+          RegExp.$1.length === 1 ? o[k]
             : ('00' + o[k]).substr(('' + o[k]).length))
       }
     }
@@ -130,5 +130,27 @@ export function html2Text(val) {
 }
 
 export function toThousandslsFilter(num) {
+  return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+}
+
+/* 数字 格式化*/
+export function numberFormatter(num, digits) {
+  const si = [
+    { value: 1E18, symbol: 'E' },
+    { value: 1E15, symbol: 'P' },
+    { value: 1E12, symbol: 'T' },
+    { value: 1E9, symbol: 'G' },
+    { value: 1E6, symbol: 'M' },
+    { value: 1E3, symbol: 'k' }
+  ]
+  for (let i = 0; i < si.length; i++) {
+    if (num >= si[i].value) {
+      return (num / si[i].value + 0.1).toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, '$1') + si[i].symbol
+    }
+  }
+  return num.toString()
+}
+
+export function toThousandFilter(num) {
   return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
 }

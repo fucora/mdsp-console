@@ -31,7 +31,6 @@
           <el-tooltip class="item" effect="dark" :content="scope.row.params" placement="top">
             <span style="display:inline-block;overflow:hidden;height:50px"> {{scope.row.params}}</span>
           </el-tooltip>
-
         </template>
       </el-table-column>
 

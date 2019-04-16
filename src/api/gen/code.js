@@ -16,3 +16,11 @@ export const exportCodeZip = (param) => {
     responseType: 'blob'
   })
 }
+
+export const buildCodeAll = (param) => {
+  return request({
+    url: '/gen/code/buildall',
+    method: 'post',
+    data: param
+  })
+}

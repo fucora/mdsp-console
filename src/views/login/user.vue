@@ -45,11 +45,11 @@
           </el-input>
         </el-form-item>
         <div class="formButton">
-          <el-form-item style="width:100%;">
+          <el-form-item>
             <el-button
               type="primary"
-              style="width:100%;"
-              :loading="loading"
+              size="small"
+              class="login-submit"
               @click.native.prevent="handleLogin"
             >登录</el-button>
           </el-form-item>
@@ -151,7 +151,7 @@ export default {
   right: 50px;
 }
 label {
-  width: 70px;
+  width: 40px;
   text-align: left;
 }
 

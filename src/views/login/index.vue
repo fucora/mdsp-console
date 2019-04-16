@@ -126,20 +126,20 @@ export default {
 
 
 .login-container {
+  display: flex;
   -webkit-border-radius: 5px;
   border-radius: 15px;
   -moz-border-radius: 5px;
   background-clip: padding-box;
   margin: 0 auto;
-  width: 100%;
+  width: 350px;
   padding: 35px 35px 15px 35px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
   position: absolute;
-  top: 120px;
-  right: 50px;
-  left: 100px;
+  top:260px;
+  right: 150px;
 }
 
 label {
