@@ -120,7 +120,6 @@ export default {
   },
   mounted() {
     this.getData()
-    console.log(' YYYY: ' + JSON.stringify(this.permissions))
     this.sys_gen_select = this.permissions['/gen/code:select']
     this.sys_gen_download = this.permissions['/gen/code:download']
   },
