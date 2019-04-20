@@ -5,7 +5,12 @@
       <el-button class="search-btn" :autofocus="true" icon="el-icon-refresh" @click="getData">刷新</el-button>
     </div>
 
-    <tree-table :data="data" :expand-all="expandAll" :columns="columns" border>
+    <el-table :data="data" row-key="id" border>
+      <el-table-column label="名称" align="center">
+        <template slot-scope="scope">
+          <span>{{scope.row.name}}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="类型" align="center">
         <template slot-scope="scope">
           <span v-if="scope.row.type == 0">
@@ -56,7 +61,7 @@
           <el-button type="danger" size="mini" @click="deleteHandle(scope.row.id)" icon="el-icon-delete" v-if="sys_resource_delete"></el-button>
         </template>
       </el-table-column>
-    </tree-table>
+    </el-table>
 
     <!-- 添加菜单信息 -->
     <el-dialog :title="dialog.title" :visible.sync="dialog.show" :before-close="closeHandle" width="600px" :close-on-click-modal="false">
@@ -118,13 +123,10 @@ import {
   deleteResourceById
 } from '@/api/menu.js'
 
-import treeTable from '@/components/TreeTable'
-
 import { mapGetters } from 'vuex'
 
 export default {
   components: {
-    treeTable
   },
   data() {
     return {

@@ -50,6 +50,7 @@
 <script>
 import CountTo from 'vue-count-to'
 export default {
+  name: 'PanelGroup',
   components: {
     CountTo
   },

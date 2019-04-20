@@ -29,11 +29,13 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
-    hidden: true,
+    name: '引号云系统',
+    // hidden: true,
     children: [{
       path: 'dashboard',
-      component: () => import('@/views/dashboard/index')
+      component: () => import('@/views/dashboard/index'),
+      name: '首页',
+      meta: { title: '引号云系统', icon: 'dashboard', noCache: true, affix: true }
     }]
   },
 ]

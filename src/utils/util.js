@@ -27,6 +27,7 @@ export const formatRoutes = (aMenu) => {
       component,
       name,
       icon,
+      redirect,
       children
     } = oMenu
     if (!validatenull(component)) {
@@ -37,11 +38,15 @@ export const formatRoutes = (aMenu) => {
           if (component === 'Layout') {
             require(['../views/layout/Layout'], resolve)
             return
+          } else if(component === 'Layout2') {
+            require(['../views/layout/Layout2'], resolve)
+            return
           } else {
             componentPath = component
           }
           require([`../${componentPath}.vue`], resolve)
         },
+        redirect: redirect,
         name: name,
         meta: {
           icon: icon,
